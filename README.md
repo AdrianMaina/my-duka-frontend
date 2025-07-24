@@ -60,6 +60,8 @@ This Vite project is configured for easy, automated deployment on platforms like
 
 *(Add screenshots of the landing page, merchant dashboard, and payment form here after development)*
 
+By Ian Githae.
+
 ## 🔗 Database ERD
 
 A link to the database Entity-Relationship Diagram can be found [here](https://link-to-your-erd-image.com).
