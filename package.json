@@ -11,10 +11,11 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.4.0",
-    "framer-motion": "^12.23.6",
+    "framer-motion": "^12.23.11",
     "jwt-decode": "^3.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.5.2",
     "react-icons": "^4.10.1",
     "react-intersection-observer": "^9.16.0",
     "react-redux": "^8.1.2",

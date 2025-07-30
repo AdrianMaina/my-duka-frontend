@@ -1,8 +1,9 @@
 // =======================================================================
-// FILE: src/features/paymentsSlice.js (FIXED)
+// FILE: src/features/paymentsSlice.js (EDITED)
 // =======================================================================
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import api from '../api/api.js';
+import toast from 'react-hot-toast'; // NEW IMPORT
 
 const initialState = {
     transactions: [],
@@ -24,7 +25,6 @@ export const fetchMpesaTransactions = createAsyncThunk('payments/fetchTransactio
 export const fetchUnpaidDeliveries = createAsyncThunk('payments/fetchUnpaid', async (storeId, { rejectWithValue }) => {
     if (!storeId) return [];
     try {
-        // This endpoint would need to be created on the backend
         const response = await api.get(`/payments/unpaid-deliveries/?store_id=${storeId}`);
         return response.data;
     } catch (err) {
@@ -34,9 +34,8 @@ export const fetchUnpaidDeliveries = createAsyncThunk('payments/fetchUnpaid', as
 
 export const payWithMpesa = createAsyncThunk('payments/pay', async (paymentData, { rejectWithValue }) => {
     try {
-        // This endpoint would need to be created on the backend
         const response = await api.post('/payments/pay-supplier/', paymentData);
-        return response.data;
+        return { ...response.data, stock_receive_id: paymentData.stock_receive_id };
     } catch (err) {
         return rejectWithValue(err.response.data);
     }
@@ -67,15 +66,18 @@ const paymentsSlice = createSlice({
                 state.status = 'failed';
                 state.error = action.payload;
             })
+            .addCase(payWithMpesa.pending, (state) => { state.status = 'loading'; })
             .addCase(payWithMpesa.fulfilled, (state, action) => {
-                alert('Payment initiated successfully!');
-                // Remove the paid item from the list
+                state.status = 'succeeded';
+                toast.success('STK Push initiated successfully!'); // REPLACED alert()
                 state.unpaidDeliveries = state.unpaidDeliveries.filter(
                     delivery => delivery.id !== action.payload.stock_receive_id
                 );
             })
             .addCase(payWithMpesa.rejected, (state, action) => {
-                alert(`Payment failed: ${action.payload.error || 'Unknown error'}`);
+                state.status = 'failed';
+                const errorMessage = action.payload?.error || 'Payment initiation failed.';
+                toast.error(errorMessage); // REPLACED alert()
             });
     },
 });

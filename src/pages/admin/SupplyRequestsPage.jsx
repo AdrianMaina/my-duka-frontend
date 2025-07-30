@@ -24,8 +24,8 @@ const SupplyRequestsPage = () => {
 
     const handleUpdate = (id, newStatus) => {
         dispatch(updateSupplyRequest({ id, status: newStatus })).then((result) => {
+            // After the update is successful, re-fetch the list to ensure UI is in sync.
             if (updateSupplyRequest.fulfilled.match(result)) {
-                // After the update is successful, re-fetch the list to ensure UI is in sync.
                 dispatch(fetchSupplyRequests());
             }
         });
