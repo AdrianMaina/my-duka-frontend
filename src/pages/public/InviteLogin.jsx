@@ -6,6 +6,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { completeInvite } from '../../features/auth/authSlice';
 import { FaEye, FaEyeSlash, FaLock } from 'react-icons/fa';
+import toast from 'react-hot-toast'; // NEW IMPORT
 
 const InviteLogin = () => {
     const { token } = useParams();
@@ -22,7 +23,7 @@ const InviteLogin = () => {
         e.preventDefault();
         const resultAction = await dispatch(completeInvite({ token, password }));
         if (completeInvite.fulfilled.match(resultAction)) {
-            alert("Account activated! Please log in with your new password.");
+            toast.success("Account activated! Please log in with your new password."); // REPLACED alert()
             navigate('/login');
         }
     };
@@ -94,4 +95,4 @@ const InviteLogin = () => {
     );
 };
 
-export default InviteLogin
+export default InviteLogin;

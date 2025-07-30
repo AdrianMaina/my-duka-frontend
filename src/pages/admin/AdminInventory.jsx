@@ -1,5 +1,5 @@
 // =======================================================================
-// FILE: src/pages/admin/AdminInventory.jsx (EDITED)
+// FILE: src/pages/admin/AdminInventory.jsx (FIXED)
 // =======================================================================
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
