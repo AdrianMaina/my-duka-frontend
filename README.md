@@ -132,4 +132,4 @@ Request new stock when items are running low.
 Log spoiled or damaged items.
 
 # Backend Repository
-https://github.com/AdrianMaina/my-duka-backend
+https://github.com/AdrianMaina/my-duka-backend.
