@@ -13,6 +13,7 @@ This is the frontend for the MyDuka application, a modern, role-based management
 - [Deployment to Vercel](#deployment-to-vercel)
 - [Key Features](#key-features)
 
+
 ## About The Project
 The MyDuka frontend provides an intuitive user interface for Merchants, Admins, and Clerks to manage store operations, from inventory and sales to staff and payments.
 
