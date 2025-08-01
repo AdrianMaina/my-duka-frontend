@@ -71,7 +71,7 @@ api/: Contains the configured Axios instance for making API calls.
 
 app/: Contains the main Redux store configuration.
 
-components/: Contains reusable UI components, organized by feature (e.g., layout, inventory, ui).
+components/: Contains reusable UI components, organized by feature (e.g., layout, inventory,ui).
 
 features/: Contains all Redux Toolkit "slices" that manage the application's state.
 
